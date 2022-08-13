@@ -1,6 +1,9 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {HttpRequestProvider, ThemeProvider} from '../providers';
+import {NavigationContainer} from '@react-navigation/native';
+
+import {ThemeProvider} from 'source/core/theme';
+
+import {HttpRequestProvider} from '../providers';
 
 export type CoreAppContainerProps = {
   children: React.ReactNode;

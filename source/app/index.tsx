@@ -1,6 +1,6 @@
 import React from 'react';
 import {App} from './App';
-import {CoreAppContainer} from './components';
+import {CoreAppContainer} from 'source/core/components';
 
 const AppWithCoreProvider = () => {
   return (

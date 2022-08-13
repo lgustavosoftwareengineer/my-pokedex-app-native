@@ -4,7 +4,7 @@ import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
 
 export const SearchPokemonsListScreen = () => {
   return (
-    <View>
+    <View testID="SearchPokemonsListScreen">
       <Text>SearchPokemonsListScreen</Text>
     </View>
   );
