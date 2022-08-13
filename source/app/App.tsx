@@ -11,7 +11,7 @@ import {
   SearchPokemonsNavigatorOptions,
   SignUpNavigator,
   SignUpNavigatorOptions,
-} from 'source/modules';
+} from 'source/features';
 import {type AppNavigatorStackParamList} from 'source/types/app';
 
 const {Navigator, Screen} =

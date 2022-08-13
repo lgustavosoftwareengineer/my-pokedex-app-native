@@ -5,7 +5,7 @@ import {
   PokemonDetailsNavigatorStackParamList,
   SearchPokemonsNavigatorStackParamList,
   SignUpNavigatorStackParamList,
-} from 'source/modules';
+} from 'source/features';
 
 export type AppNavigatorStackParamList = {
   MyPokedexNavigator: NavigatorScreenParams<MyPokedexNavigatorStackParamList>;
