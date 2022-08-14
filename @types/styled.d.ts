@@ -1,15 +1,21 @@
 declare module 'styled-components/native' {
-  export interface DefaultTheme {
+  export type Font = {
+    name: string;
+    size: number;
+  };
+  export type DefaultTheme = {
     colors: {
       primary: string;
       secondary: string;
       text: string;
       background: string;
+      error: string;
+      success: string;
     };
     fonts: {
-      normal: string;
-      subTitle: string;
-      title: string;
+      normal: Font;
+      subTitle: Font;
+      title: Font;
     };
-  }
+  };
 }
