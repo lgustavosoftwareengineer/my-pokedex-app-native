@@ -1,9 +1,16 @@
 import React from 'react';
+import {ThemeProvider as StyledComponentsThemeProvider} from 'styled-components';
+
+import {Theme} from '../../constants/themeConstant';
 
 export type ThemeProviderProps = {
   children: React.ReactNode;
 };
 
 export const ThemeProvider = ({children}: ThemeProviderProps) => {
-  return <>{children}</>;
+  return (
+    <StyledComponentsThemeProvider theme={Theme}>
+      {children}
+    </StyledComponentsThemeProvider>
+  );
 };

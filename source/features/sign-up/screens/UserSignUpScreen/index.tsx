@@ -1,16 +1,18 @@
 import React from 'react';
-import {Button, Text} from 'react-native';
+import {Button} from 'react-native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {Screen} from 'source/core/components';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
+
 import {AppNavigatorStackParamList} from 'source/types/app';
+
+import {ScreenWithStyle, Text} from './styles';
 
 export const UserSignUpScreen = () => {
   const navigation =
     useNavigation<NavigationProp<AppNavigatorStackParamList>>();
 
   return (
-    <Screen>
+    <ScreenWithStyle>
       <Text>UserSignUpScreen</Text>
       <Button
         title="Entrar no aplicativo"
@@ -20,7 +22,7 @@ export const UserSignUpScreen = () => {
           })
         }
       />
-    </Screen>
+    </ScreenWithStyle>
   );
 };
 
