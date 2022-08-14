@@ -12,7 +12,11 @@
     /* Completeness */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "types": [
-      "styled-components-react-native"
+      "styled-components-react-native",
+      "jest"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
     ],
   },
 }
