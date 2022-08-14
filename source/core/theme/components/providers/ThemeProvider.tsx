@@ -1,5 +1,5 @@
 import React from 'react';
-import {ThemeProvider as StyledComponentsThemeProvider} from 'styled-components';
+import {ThemeProvider as StyledComponentsThemeProvider} from '../../services';
 
 import {Theme} from '../../constants/themeConstant';
 
