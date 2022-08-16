@@ -8,9 +8,3 @@ export const ScreenWithStyle = styled(Screen)`
 export const Text = styled.Text`
   font-family: ${({theme}) => theme.fonts.normal.name};
 `;
-
-export const TextInputError = styled.Text`
-  font-family: ${({theme}) => theme.fonts.normal.name};
-  font-size: ${({theme}) => theme.fonts.normal.size}px;
-  color: ${({theme}) => theme.colors.error};
-`;
