@@ -16,11 +16,11 @@ describe('UserSignUpScreen', () => {
     const ageInput = screen.getByTestId('age-input-test-id');
     const signUpButton = screen.getByTestId('sign-up-button-test-id');
 
-    fireEvent.changeText(nameInput, undefined);
-    fireEvent.changeText(ageInput, undefined);
+    fireEvent.changeText(nameInput, '');
+    fireEvent.changeText(ageInput, '');
 
     const inputsErrors = await screen.findAllByText('Este campo é requerido');
-    expect(inputsErrors).toHaveLength(2);
+    expect(inputsErrors).toHaveLength(3);
     expect(signUpButton).toBeDisabled();
   });
   it.todo(
