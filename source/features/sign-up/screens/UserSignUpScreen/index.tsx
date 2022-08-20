@@ -106,7 +106,7 @@ export const UserSignUpScreen = () => {
       />
       <Button
         title="Entrar no aplicativo"
-        onPress={() => handleSubmit()}
+        onPress={handleSubmit}
         testID="sign-up-button-test-id"
         disabled={!isValid}
       />
