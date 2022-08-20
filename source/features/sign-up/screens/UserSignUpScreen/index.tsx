@@ -1,11 +1,9 @@
 import React, {useEffect} from 'react';
 import {Button, Image} from 'react-native';
 import {NativeStackNavigationOptions} from '@react-navigation/native-stack';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
 import * as Yup from 'yup';
 
 import {useImagePicker} from 'source/core/hooks';
-import {AppNavigatorStackParamList} from 'source/types/app';
 import {useForm} from 'source/core/hooks';
 import {
   TextInput,
@@ -14,12 +12,8 @@ import {
 } from 'source/core/components';
 
 import {ScreenWithStyle} from './styles';
-
-type FormData = {
-  name: string;
-  age: string;
-  profileImage: string;
-};
+import {useUser} from 'source/core/hooks/user';
+import {User} from 'source/types/user';
 
 const VALIDATION_SCHEMA = Yup.object({
   name: Yup.string().required().required('Este campo é requerido'),
@@ -27,7 +21,7 @@ const VALIDATION_SCHEMA = Yup.object({
   profileImage: Yup.string().required('Este campo é requerido'),
 }).required();
 
-const DEFAULT_FORM_VALUES: FormData = {
+const DEFAULT_FORM_VALUES: User = {
   age: '',
   name: '',
   profileImage: '',
@@ -36,17 +30,14 @@ const DEFAULT_FORM_VALUES: FormData = {
 const PROFILE_PHOTO_SIZE = 100;
 
 export const UserSignUpScreen = () => {
-  const navigation =
-    useNavigation<NavigationProp<AppNavigatorStackParamList>>();
+  const {setUser} = useUser();
 
   const {getFieldProps, handleSubmit, isValid, setFieldValue, values, errors} =
-    useForm<FormData>({
+    useForm<User>({
       initialValues: DEFAULT_FORM_VALUES,
       validationSchema: VALIDATION_SCHEMA,
       onSubmit: () => {
-        navigation.navigate('SearchPokemonsNavigator', {
-          screen: 'SearchPokemonsListScreen',
-        });
+        setUser({...values, isLogged: true});
       },
     });
 

@@ -13,23 +13,32 @@ import {
   SignUpNavigatorOptions,
 } from 'source/features';
 import {type AppNavigatorStackParamList} from 'source/types/app';
+import {useUser} from 'source/core/hooks/user';
 
 const {Navigator, Screen} =
   createNativeStackNavigator<AppNavigatorStackParamList>();
 
 export const App = () => {
+  const {user} = useUser();
+  const {isLogged} = user;
+
+  console.log({isLogged});
+
   return (
     <Navigator screenOptions={DefaultNavigationOptions}>
-      <Screen
-        name="SignUpNavigator"
-        component={SignUpNavigator}
-        options={SignUpNavigatorOptions}
-      />
-      <Screen
-        name="SearchPokemonsNavigator"
-        component={SearchPokemonsNavigator}
-        options={SearchPokemonsNavigatorOptions}
-      />
+      {!isLogged ? (
+        <Screen
+          name="SignUpNavigator"
+          component={SignUpNavigator}
+          options={SignUpNavigatorOptions}
+        />
+      ) : (
+        <Screen
+          name="SearchPokemonsNavigator"
+          component={SearchPokemonsNavigator}
+          options={SearchPokemonsNavigatorOptions}
+        />
+      )}
       <Screen
         name="MyPokedexNavigator"
         component={MyPokedexNavigator}
