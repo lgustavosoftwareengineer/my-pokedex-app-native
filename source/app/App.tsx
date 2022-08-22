@@ -22,8 +22,6 @@ export const App = () => {
   const {user} = useUser();
   const {isLogged} = user;
 
-  console.log({isLogged});
-
   return (
     <Navigator screenOptions={DefaultNavigationOptions}>
       {!isLogged ? (

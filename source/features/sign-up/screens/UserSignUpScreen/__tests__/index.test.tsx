@@ -1,10 +1,11 @@
 import React from 'react';
-import {fireEvent, render, screen} from '@testing-library/react-native';
+import {act, fireEvent, render, screen} from '@testing-library/react-native';
 import {faker} from '@faker-js/faker';
 import {CoreAppContainer} from 'source/core/components';
 import {UserSignUpScreen} from '..';
 import {useImagePicker} from 'source/core/hooks/useImagePicker';
 import {App} from 'source/app/App';
+import {useUser} from 'source/core/hooks/user';
 
 jest.mock('source/core/hooks/useImagePicker');
 const mockedUseImagePicker = jest.mocked(useImagePicker);
@@ -62,7 +63,33 @@ describe('UserSignUpScreen', () => {
     );
     expect(searchPokemonListScreen).toBeDefined();
   });
-  it.todo(
-    'given user is already sign ip, when enter in app, must be redirect to search pokemon list screen',
-  );
+  it('given user is already sign ip, when enter in app, must be redirect to search pokemon list screen', async () => {
+    act(() =>
+      useUser.setState({
+        user: {
+          age: '',
+          name: '',
+          profileImage: '',
+          isLogged: true,
+        },
+      }),
+    );
+    mockedUseImagePicker.mockReturnValue([
+      {assets: [{uri: faker.image.avatar()}]},
+      {
+        getImageFromCamera: jest.fn(),
+        getImageFromLibrary: jest.fn(),
+      },
+    ]);
+    render(
+      <CoreAppContainer>
+        <App />
+      </CoreAppContainer>,
+    );
+
+    const searchPokemonListScreen = await screen.findByTestId(
+      'SearchPokemonsListScreen',
+    );
+    expect(searchPokemonListScreen).toBeDefined();
+  });
 });
