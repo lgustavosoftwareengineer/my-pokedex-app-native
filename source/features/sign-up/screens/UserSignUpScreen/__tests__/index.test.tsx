@@ -19,7 +19,7 @@ describe('UserSignUpScreen', () => {
     isLogged: true,
   };
 
-  test('given some sign up field empty, then the sign up button must be disabled and must appear a message inside in each input saying it is required', async () => {
+  it('given some sign up field empty, then the sign up button must be disabled and must appear a message inside in each input saying it is required', async () => {
     mockedUseImagePicker.mockReturnValue([
       {assets: [{uri: ''}]},
       {
@@ -27,7 +27,6 @@ describe('UserSignUpScreen', () => {
         getImageFromLibrary: jest.fn(),
       },
     ]);
-
     render(
       <CoreAppContainer>
         <UserSignUpScreen />
@@ -45,7 +44,7 @@ describe('UserSignUpScreen', () => {
     expect(signUpButton).toBeDisabled();
   });
 
-  test('given sign up field are enabled, when clicked, user must be redirect to search pokemon list screen', async () => {
+  it('given sign up field are enabled, when clicked, user must be redirect to search pokemon list screen', async () => {
     mockedUseImagePicker.mockReturnValue([
       {assets: [{uri: fakerUser.profileImage}]},
       {
@@ -73,7 +72,7 @@ describe('UserSignUpScreen', () => {
     expect(searchPokemonListScreen).toBeDefined();
   });
 
-  test('given user is already sign ip, when enter in app, must be redirect to search pokemon list screen', async () => {
+  it('given user is already sign ip, when enter in app, must be redirect to search pokemon list screen', async () => {
     act(() =>
       useUser.setState({
         user: fakerUser,
